@@ -586,8 +586,8 @@ class AllComponentsPage extends StatelessWidget {
 
   void _executeComponentActionScript(BuildContext context, String componentName, String scriptFile, String action) async {
     try {
-      // Launch script in external terminal
-      await _runScriptByName(scriptFile);
+      // Launch script in external terminal with action parameter
+      await _runScriptByNameWithAction(scriptFile, action);
       
       // Show success notification
       if (context.mounted) {
@@ -757,6 +757,59 @@ class AllComponentsPage extends StatelessWidget {
     if (exitCode != 0) {
       throw Exception('Failed to launch external terminal for script $scriptPath');
     }
+  }
+
+  Future<void> _runScriptWithParams(String scriptPath, List<String> params) async {
+    // Build parameter string for PowerShell
+    final paramString = params.map((param) => '-$param').join(' ');
+    
+    // Run PowerShell script in external terminal window with parameters
+    final process = await Process.start(
+      'powershell.exe',
+      [
+        '-ExecutionPolicy',
+        'Bypass',
+        '-Command',
+        'Start-Process powershell -ArgumentList "-ExecutionPolicy Bypass -NoExit -Command \\"& \'$scriptPath\' $paramString; Write-Host \'Script execution completed. Press any key to exit...\'; Read-Host\\"" -Verb RunAs'
+      ],
+      runInShell: true,
+    );
+
+    final exitCode = await process.exitCode;
+    if (exitCode != 0) {
+      throw Exception('Failed to launch external terminal for script $scriptPath with parameters');
+    }
+  }
+
+  Future<void> _runScriptByNameWithAction(String scriptFileName, String action) async {
+    // First, try to find the script in core subdirectories
+    final coreDir = Directory(path.join('windows_scripts', 'core'));
+    
+    if (coreDir.existsSync()) {
+      for (final entity in coreDir.listSync(recursive: true)) {
+        if (entity is File && entity.path.endsWith(scriptFileName)) {
+          await _runScriptWithParams(entity.path, ['Action $action']);
+          return;
+        }
+      }
+    }
+    
+    // Fallback: try common script locations
+    final fallbackPaths = [
+      path.join('windows_scripts', scriptFileName),
+      path.join('windows_scripts', 'scripts', scriptFileName),
+      path.join('windows_scripts', 'core', scriptFileName),
+    ];
+    
+    for (final fallbackPath in fallbackPaths) {
+      final file = File(fallbackPath);
+      if (file.existsSync()) {
+        await _runScriptWithParams(file.path, ['Action $action']);
+        return;
+      }
+    }
+    
+    throw Exception('Script $scriptFileName not found in any search location');
   }
 
   Future<void> _runScriptByName(String scriptFileName) async {
