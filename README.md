@@ -20,7 +20,19 @@ SetWinX is a comprehensive CLI tool that simplifies the installation and managem
 ### One-Command Installation
 ```powershell
 # Install SetWinX CLI globally from GitHub
-iex (irm "https://raw.githubusercontent.com/anshulyadav32/setupx/master/install.ps1")
+Invoke-RestMethod -Uri "https://raw.githubusercontent.com/anshulyadav32/setupx/master/install.ps1" | Invoke-Expression
+```
+
+### Force Installation (No Prompts)
+```powershell
+# Force installation - overwrites existing installation without prompts
+& ([scriptblock]::Create((Invoke-RestMethod -Uri "https://raw.githubusercontent.com/anshulyadav32/setupx/master/install.ps1"))) -Force
+```
+
+### Custom Installation Path
+```powershell
+# Install to custom directory
+& ([scriptblock]::Create((Invoke-RestMethod -Uri "https://raw.githubusercontent.com/anshulyadav32/setupx/master/install.ps1"))) -InstallPath "C:\MyTools\SetWinX"
 ```
 
 ### Manual Installation
