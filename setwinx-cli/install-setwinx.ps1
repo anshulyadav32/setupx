@@ -47,8 +47,8 @@ try {
     exit 1
 }
 
-# Set up the CLI path (pointing to windows_scripts directory)
-$CLIPath = Join-Path $InstallPath "windows_scripts"
+# Set up the CLI path (pointing to setwinx-cli directory)
+$CLIPath = Join-Path $InstallPath "setwinx-cli"
 if (-not (Test-Path $CLIPath)) {
     Write-Host "ERROR: CLI scripts not found in: $CLIPath" -ForegroundColor Red
     exit 1

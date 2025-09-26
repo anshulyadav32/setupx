@@ -1,229 +1,121 @@
-# SetupX Installer - Modular Windows Development Setup
-# Author: Anshul Yadav
-# Repository: https://github.com/anshulyadav32/setupx
+# SetWinX CLI Installation Script
+# This script installs SetWinX CLI to c:\dev0-1\setupx-cli and adds it to PATH
 
 param(
-    [switch]$Force,
-    [string]$InstallPath = "$env:USERPROFILE\SetupX"
+    [string]$InstallPath = "c:\dev0-1\setupx-cli",
+    [string]$GitHubRepo = "https://github.com/anshulyadav32/setupx.git",
+    [switch]$Force
 )
 
-# Configuration
-$RepoOwner = "anshulyadav32"
-$RepoName = "setupx"
-$Branch = "master"
-$GitHubApiUrl = "https://api.github.com/repos/$RepoOwner/$RepoName"
-$DownloadUrl = "https://github.com/$RepoOwner/$RepoName/archive/refs/heads/$Branch.zip"
+Write-Host "SetWinX CLI Installation Script" -ForegroundColor Cyan
+Write-Host "===============================" -ForegroundColor Cyan
+Write-Host ""
 
-# Colors for output
-$Colors = @{
-    Success = "Green"
-    Warning = "Yellow" 
-    Error   = "Red"
-    Info    = "Cyan"
-    Header  = "Magenta"
+# Check if Git is installed
+if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
+    Write-Host "ERROR: Git is not installed. Please install Git first." -ForegroundColor Red
+    exit 1
 }
 
-function Write-ColorOutput {
-    param([string]$Message, [string]$Color = "White")
-    Write-Host $Message -ForegroundColor $Colors[$Color]
-}
-
-function Write-Header {
-    param([string]$Text)
-    Write-Host "`n" -NoNewline
-    Write-Host "=" * 60 -ForegroundColor $Colors.Header
-    Write-Host " $Text" -ForegroundColor $Colors.Header
-    Write-Host "=" * 60 -ForegroundColor $Colors.Header
-    Write-Host ""
-}
-
-function Test-AdminRights {
-    $currentUser = [Security.Principal.WindowsIdentity]::GetCurrent()
-    $principal = New-Object Security.Principal.WindowsPrincipal($currentUser)
-    return $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
-}
-
-function Test-PowerShellVersion {
-    return $PSVersionTable.PSVersion.Major -ge 5
-}
-
-function Get-UserConfirmation {
-    param([string]$Message)
-    
-    if ($Force) { return $true }
-    
-    do {
-        $response = Read-Host "$Message (y/N)"
-        $response = $response.ToLower()
-    } while ($response -notin @('', 'y', 'yes', 'n', 'no'))
-    
-    return $response -in @('y', 'yes')
-}
-
-function Test-InternetConnection {
-    try {
-        Invoke-RestMethod -Uri $GitHubApiUrl -TimeoutSec 10 -ErrorAction Stop | Out-Null
-        return $true
-    }
-    catch {
-        Write-ColorOutput "[ERROR] Cannot connect to GitHub. Please check your internet connection." "Error"
-        return $false
-    }
-}
-
-function New-TempDirectory {
-    $tempPath = Join-Path $env:TEMP "SetupX-Install-$(Get-Date -Format 'yyyyMMdd-HHmmss')"
-    New-Item -ItemType Directory -Path $tempPath -Force | Out-Null
-    return $tempPath
-}
-
-function Install-SetupX {
-    Write-Header "SetupX Installation Started"
-    
-    # Prerequisites Check
-    Write-ColorOutput "[INFO] Checking prerequisites..." "Info"
-    
-    if (-not (Test-PowerShellVersion)) {
-        Write-ColorOutput "[ERROR] PowerShell 5.0 or higher is required." "Error"
-        return $false
-    }
-    
-    if (-not (Test-InternetConnection)) {
-        return $false
-    }
-    
-    # Check if installation directory exists
-    if (Test-Path $InstallPath) {
-        Write-ColorOutput "[WARNING] Installation directory already exists: $InstallPath" "Warning"
-        if (-not (Get-UserConfirmation "Do you want to overwrite the existing installation?")) {
-            Write-ColorOutput "[ERROR] Installation cancelled by user." "Warning"
-            return $false
-        }
-        
-        Write-ColorOutput "[INFO] Removing existing installation..." "Info"
-        Remove-Item $InstallPath -Recurse -Force -ErrorAction SilentlyContinue
-    }
-    
-    # Create temporary directory
-    Write-ColorOutput "[INFO] Creating temporary directory..." "Info"
-    $tempDir = New-TempDirectory
-    $zipPath = Join-Path $tempDir "setupx.zip"
-    
-    try {
-        # Download the repository
-        Write-ColorOutput "[INFO] Downloading SetupX from GitHub..." "Info"
-        Write-ColorOutput "       Source: $DownloadUrl" "Info"
-        
-        Invoke-WebRequest -Uri $DownloadUrl -OutFile $zipPath -UseBasicParsing
-        
-        # Extract the archive
-        Write-ColorOutput "[INFO] Extracting files..." "Info"
-        Add-Type -AssemblyName System.IO.Compression.FileSystem
-        [System.IO.Compression.ZipFile]::ExtractToDirectory($zipPath, $tempDir)
-        
-        # Find the extracted directory
-        $extractedDir = Get-ChildItem $tempDir -Directory | Where-Object { $_.Name -like "$RepoName-*" } | Select-Object -First 1
-        
-        if (-not $extractedDir) {
-            throw "Could not find extracted directory"
-        }
-        
-        # Look for windows_scripts directory
-        $windowsScriptsPath = Join-Path $extractedDir.FullName "windows_scripts"
-        
-        if (-not (Test-Path $windowsScriptsPath)) {
-            throw "SetupX framework not found in downloaded archive"
-        }
-        
-        # Create installation directory
-        Write-ColorOutput "[INFO] Creating installation directory..." "Info"
-        New-Item -ItemType Directory -Path $InstallPath -Force | Out-Null
-        
-        # Copy SetupX framework
-        Write-ColorOutput "[INFO] Installing SetupX framework..." "Info"
-        Copy-Item -Path "$windowsScriptsPath\*" -Destination $InstallPath -Recurse -Force
-        
-        # Add to PATH if requested
-        $addToPath = Get-UserConfirmation "Do you want to add SetupX to your PATH environment variable?"
-        
-        if ($addToPath) {
-            Write-ColorOutput "[INFO] Adding SetupX to PATH..." "Info"
-            
-            # Get current PATH
-            $currentPath = [Environment]::GetEnvironmentVariable("PATH", "User")
-            
-            # Check if already in PATH
-            if ($currentPath -split ";" -contains $InstallPath) {
-                Write-ColorOutput "[INFO] SetupX is already in PATH" "Info"
-            } else {
-                $newPath = if ($currentPath) { "$currentPath;$InstallPath" } else { $InstallPath }
-                [Environment]::SetEnvironmentVariable("PATH", $newPath, "User")
-                Write-ColorOutput "[SUCCESS] SetupX added to PATH" "Success"
-            }
-        }
-        
-        Write-Header "SetupX Installation Complete"
-        Write-ColorOutput "[SUCCESS] Installation Location: $InstallPath" "Success"
-        Write-ColorOutput "" "Info"
-        Write-ColorOutput "[INFO] Quick Start Commands:" "Header"
-        Write-ColorOutput "       PowerShell: .\setwinx.ps1" "Info"
-        Write-ColorOutput "       Full Path: $InstallPath\setwinx.ps1" "Info"
-        Write-ColorOutput "" "Info"
-        Write-ColorOutput "[INFO] Documentation: https://github.com/$RepoOwner/$RepoName" "Info"
-        
-        if ($addToPath) {
-            Write-ColorOutput "[WARNING] Note: Restart your terminal or run refreshenv to use PATH updates" "Warning"
-        }
-        
-        return $true
-    }
-    catch {
-        Write-ColorOutput "[ERROR] Installation failed: $($_.Exception.Message)" "Error"
-        return $false
-    }
-    finally {
-        # Clean up temporary files
-        if (Test-Path $tempDir) {
-            Remove-Item $tempDir -Recurse -Force -ErrorAction SilentlyContinue
-        }
-    }
-}
-
-function Show-WelcomeMessage {
-    Write-Host @"
-
-    ================================================================
-                        SetupX Installer                           
-                                                                   
-            Modular Windows Development Setup Tool                 
-                                                                   
-    ================================================================
-
-"@ -ForegroundColor $Colors.Header
-}
-
-# Main execution
-try {
-    Show-WelcomeMessage
-    
-    Write-ColorOutput "[INFO] Target Installation Path: $InstallPath" "Info"
-    
-    if (-not $Force) {
-        Write-ColorOutput "[INFO] Running in interactive mode. Use -Force to skip prompts." "Info"
-    }
-    
-    $success = Install-SetupX
-    
-    if ($success) {
-        Write-ColorOutput "`n[SUCCESS] Thank you for installing SetupX! Happy coding!" "Success"
-        exit 0
+# Create installation directory
+Write-Host "Creating installation directory: $InstallPath" -ForegroundColor Yellow
+if (Test-Path $InstallPath) {
+    if ($Force) {
+        Write-Host "Directory exists. Removing due to -Force flag..." -ForegroundColor Yellow
+        Remove-Item -Recurse -Force $InstallPath
     } else {
-        Write-ColorOutput "`n[ERROR] Installation failed. Please check the error messages above." "Error"
+        Write-Host "ERROR: Directory already exists. Use -Force to overwrite." -ForegroundColor Red
         exit 1
     }
 }
-catch {
-    Write-ColorOutput "[ERROR] Unexpected error: $($_.Exception.Message)" "Error"
-    Write-ColorOutput "[INFO] Please report this issue at: https://github.com/$RepoOwner/$RepoName/issues" "Info"
+
+try {
+    New-Item -ItemType Directory -Path $InstallPath -Force | Out-Null
+    Write-Host "SUCCESS: Directory created" -ForegroundColor Green
+} catch {
+    Write-Host "ERROR: Failed to create directory: $_" -ForegroundColor Red
     exit 1
 }
+
+# Clone repository
+Write-Host "Cloning repository from GitHub..." -ForegroundColor Yellow
+try {
+    git clone $GitHubRepo $InstallPath
+    Write-Host "SUCCESS: Repository cloned" -ForegroundColor Green
+} catch {
+    Write-Host "ERROR: Failed to clone repository: $_" -ForegroundColor Red
+    exit 1
+}
+
+# Set up the CLI path (pointing to setwinx-cli directory)
+$CLIPath = Join-Path $InstallPath "setwinx-cli"
+if (-not (Test-Path $CLIPath)) {
+    Write-Host "ERROR: CLI scripts not found in: $CLIPath" -ForegroundColor Red
+    exit 1
+}
+
+# Add to PATH
+Write-Host "Adding CLI to system PATH..." -ForegroundColor Yellow
+try {
+    # Get current PATH
+    $currentPath = [Environment]::GetEnvironmentVariable("Path", "User")
+    
+    # Check if already in PATH
+    if ($currentPath -split ";" -contains $CLIPath) {
+        Write-Host "SUCCESS: CLI path already exists in PATH" -ForegroundColor Green
+    } else {
+        # Add to PATH
+        $newPath = $currentPath + ";" + $CLIPath
+        [Environment]::SetEnvironmentVariable("Path", $newPath, "User")
+        
+        # Update current session PATH
+        $env:Path = $newPath
+        
+        Write-Host "SUCCESS: CLI added to PATH" -ForegroundColor Green
+    }
+} catch {
+    Write-Host "ERROR: Failed to add to PATH: $_" -ForegroundColor Red
+    exit 1
+}
+
+# Create batch file for easier access
+$BatchFile = Join-Path $CLIPath "setwinx.bat"
+$BatchContent = "@echo off`npowershell.exe -ExecutionPolicy Bypass -File `"%~dp0setwinx.ps1`" %*"
+
+try {
+    Set-Content -Path $BatchFile -Value $BatchContent
+    Write-Host "SUCCESS: Created setwinx.bat" -ForegroundColor Green
+} catch {
+    Write-Host "WARNING: Could not create batch file" -ForegroundColor Yellow
+}
+
+# Test installation
+Write-Host "Testing installation..." -ForegroundColor Yellow
+try {
+    Push-Location $CLIPath
+    $testResult = & ".\setwinx.ps1" --version 2>&1
+    if ($LASTEXITCODE -eq 0) {
+        Write-Host "SUCCESS: Installation test passed!" -ForegroundColor Green
+        Write-Host "Version: $testResult" -ForegroundColor Cyan
+    } else {
+        Write-Host "WARNING: Installation completed but test failed" -ForegroundColor Yellow
+    }
+} catch {
+    Write-Host "WARNING: Could not test installation: $_" -ForegroundColor Yellow
+} finally {
+    Pop-Location
+}
+
+Write-Host ""
+Write-Host "SetWinX CLI Installation Complete!" -ForegroundColor Green
+Write-Host "==================================" -ForegroundColor Green
+Write-Host ""
+Write-Host "Installed to: $CLIPath" -ForegroundColor Cyan
+Write-Host "Added to PATH: Yes" -ForegroundColor Cyan
+Write-Host ""
+Write-Host "Usage:" -ForegroundColor Yellow
+Write-Host "  setwinx --help          # Show help" -ForegroundColor Gray
+Write-Host "  setwinx --list-modules  # List available modules" -ForegroundColor Gray
+Write-Host "  setwinx --status        # Check component status" -ForegroundColor Gray
+Write-Host ""
+Write-Host "NOTE: You may need to restart your terminal for PATH changes to take effect." -ForegroundColor Yellow

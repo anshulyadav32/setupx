@@ -20,7 +20,7 @@ SetWinX is a comprehensive CLI tool that simplifies the installation and managem
 ### One-Command Installation
 ```powershell
 # Install SetWinX CLI globally from GitHub
-iex (irm "https://raw.githubusercontent.com/anshulyadav32/setupx/master/windows_scripts/install-setwinx.ps1")
+iex (irm "https://raw.githubusercontent.com/anshulyadav32/setupx/master/install.ps1")
 ```
 
 ### Manual Installation
@@ -29,7 +29,8 @@ iex (irm "https://raw.githubusercontent.com/anshulyadav32/setupx/master/windows_
 git clone https://github.com/anshulyadav32/setupx.git c:\dev0-1\setupx-cli
 
 # Add to PATH (replace with your installation path)
-$CLIPath = "c:\dev0-1\setupx-cli\windows_scripts"
+# Add to PATH
+$CLIPath = "c:\dev0-1\setupx-cli\setwinx-cli"
 $currentPath = [Environment]::GetEnvironmentVariable("Path", "User")
 $newPath = $currentPath + ";" + $CLIPath
 [Environment]::SetEnvironmentVariable("Path", $newPath, "User")
@@ -188,7 +189,7 @@ setwinx 8.1 status      # Check Chrome status (Category 8, Component 1)
 
 ```
 setupx/
-├── windows_scripts/          # Main CLI directory
+├── setwinx-cli/             # Main CLI directory
 │   ├── setwinx.ps1          # Main CLI script
 │   ├── setwinx.bat          # Windows batch wrapper
 │   ├── install-setwinx.ps1  # Installation script
