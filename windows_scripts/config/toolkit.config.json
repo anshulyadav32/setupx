@@ -1,0 +1,145 @@
+{
+  "version": "2.0.0",
+  "logging": {
+    "level": "Info",
+    "logToFile": true,
+    "logPath": "logs",
+    "maxLogFiles": 10,
+    "maxLogSizeMB": 50
+  },
+  "installation": {
+    "retryCount": 3,
+    "retryDelay": 5,
+    "timeoutSeconds": 300,
+    "preferredPackageManager": "winget",
+    "fallbackToChocolatey": true,
+    "parallelInstallation": false
+  },
+  "testing": {
+    "functionalityTestPassRate": 0.7,
+    "pathVerificationRequired": true,
+    "versionVerificationRequired": true,
+    "parallelExecution": true,
+    "testTimeout": 120
+  },
+  "categories": {
+    "package-managers": {
+      "enabled": true,
+      "priority": 1,
+      "tools": ["winget", "chocolatey", "scoop", "npm"]
+    },
+    "web-development": {
+      "enabled": true,
+      "priority": 2,
+      "tools": ["nodejs", "yarn", "webpack", "vite"]
+    },
+    "android-development": {
+      "enabled": true,
+      "priority": 3,
+      "tools": ["android-studio", "android-sdk", "adb"]
+    },
+    "cross-platform-flutter": {
+      "enabled": true,
+      "priority": 4,
+      "tools": ["flutter", "dart", "flutter-doctor"]
+    },
+    "cross-platform-react-native": {
+      "enabled": true,
+      "priority": 5,
+      "tools": ["react-native", "metro", "hermes"]
+    },
+    "backend-development": {
+      "enabled": true,
+      "priority": 6,
+      "tools": ["python", "java", "dotnet", "go", "rust"]
+    },
+    "cloud-development": {
+      "enabled": true,
+      "priority": 7,
+      "tools": ["aws-cli", "azure-cli", "gcloud", "kubectl"]
+    },
+    "windows-development": {
+      "enabled": true,
+      "priority": 8,
+      "tools": ["visual-studio", "visual-studio-code", "powershell"]
+    },
+    "wsl-development": {
+      "enabled": true,
+      "priority": 9,
+      "tools": ["wsl", "ubuntu", "kali"]
+    },
+    "ai-development": {
+      "enabled": true,
+      "priority": 10,
+      "tools": ["python", "tensorflow", "pytorch", "jupyter", "anaconda"]
+    },
+    "server-development": {
+      "enabled": true,
+      "priority": 11,
+      "tools": ["apache", "nginx", "xampp"]
+    },
+    "basic-development": {
+      "enabled": true,
+      "priority": 12,
+      "tools": ["git", "github-cli", "vscode"]
+    },
+    "browsers": {
+      "enabled": true,
+      "priority": 13,
+      "tools": ["chrome", "firefox", "edge"]
+    },
+    "containers": {
+      "enabled": true,
+      "priority": 14,
+      "tools": ["docker", "docker-compose", "kubernetes"]
+    },
+    "databases": {
+      "enabled": true,
+      "priority": 15,
+      "tools": ["postgresql", "mysql", "mongodb"]
+    }
+  },
+  "paths": {
+    "templates": "templates",
+    "logs": "logs",
+    "cache": "cache",
+    "backup": "backup"
+  },
+  "superModules": {
+    "frontend-development": {
+      "enabled": true,
+      "priority": 1,
+      "modules": ["web-development", "cross-platform-flutter", "cross-platform-react-native", "browsers"]
+    },
+    "backend-development": {
+      "enabled": true,
+      "priority": 2,
+      "modules": ["backend-development", "cloud-development", "databases"]
+    },
+    "mobile-development": {
+      "enabled": true,
+      "priority": 3,
+      "modules": ["android-development", "cross-platform-flutter", "cross-platform-react-native"]
+    },
+    "cloud-development": {
+      "enabled": true,
+      "priority": 4,
+      "modules": ["cloud-development", "containers", "databases"]
+    },
+    "ai-development": {
+      "enabled": true,
+      "priority": 5,
+      "modules": ["ai-development", "python", "jupyter"]
+    },
+    "server-development": {
+      "enabled": true,
+      "priority": 6,
+      "modules": ["server-development", "containers", "databases"]
+    },
+    "basic-development": {
+      "enabled": true,
+      "priority": 7,
+      "modules": ["basic-development", "package-managers", "browsers"]
+    }
+  }
+}

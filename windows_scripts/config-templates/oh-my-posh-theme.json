@@ -1,0 +1,236 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
+  "final_space": true,
+  "console_title_template": "{{ .Shell }} in {{ .Folder }}",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "session",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#007ACC",
+          "template": " {{ if .SSHSession }}\uf817 {{ end }}{{ .UserName }}@{{ .HostName }} "
+        },
+        {
+          "type": "path",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#61AFEF",
+          "properties": {
+            "style": "folder",
+            "max_depth": 2,
+            "folder_separator_icon": "  ",
+            "home_icon": "~",
+            "windows_registry_icon": " ",
+            "folder_icon": " ",
+            "folder_icon_color": "#FFB86C"
+          },
+          "template": " {{ .Path }} "
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#E06C75",
+          "properties": {
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true,
+            "branch_icon": " ",
+            "commit_icon": " ",
+            "tag_icon": " ",
+            "stash_icon": " ",
+            "ahead_icon": " ",
+            "behind_icon": " ",
+            "diverged_icon": " ",
+            "no_upstream_icon": " ",
+            "untracked_icon": " ",
+            "staged_icon": " ",
+            "modified_icon": " ",
+            "deleted_icon": " ",
+            "renamed_icon": " ",
+            "conflicted_icon": " ",
+            "stashed_icon": " ",
+            "ahead_icon_color": "#4EC9B0",
+            "behind_icon_color": "#F14C4C",
+            "diverged_icon_color": "#FFB86C",
+            "no_upstream_icon_color": "#F14C4C",
+            "untracked_icon_color": "#F14C4C",
+            "staged_icon_color": "#4EC9B0",
+            "modified_icon_color": "#FFB86C",
+            "deleted_icon_color": "#F14C4C",
+            "renamed_icon_color": "#4EC9B0",
+            "conflicted_icon_color": "#F14C4C",
+            "stashed_icon_color": "#FFB86C"
+          },
+          "template": " {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{if .Working.Changed }} {{ .Working.String }}{{ end }}{{if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{if .Staging.Changed }} {{ .Staging.String }}{{ end }}{{if .StashCount }} {{ .StashCount }}{{ end }} "
+        },
+        {
+          "type": "node",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#E06C75",
+          "properties": {
+            "fetch_version": true,
+            "display_mode": "context"
+          },
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}{{ end }} "
+        },
+        {
+          "type": "python",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#E06C75",
+          "properties": {
+            "fetch_version": true,
+            "display_mode": "context"
+          },
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} "
+        },
+        {
+          "type": "go",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#E06C75",
+          "properties": {
+            "fetch_version": true,
+            "display_mode": "context"
+          },
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} "
+        },
+        {
+          "type": "rust",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#E06C75",
+          "properties": {
+            "fetch_version": true,
+            "display_mode": "context"
+          },
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} "
+        },
+        {
+          "type": "java",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#E06C75",
+          "properties": {
+            "fetch_version": true,
+            "display_mode": "context"
+          },
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} "
+        },
+        {
+          "type": "dotnet",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#E06C75",
+          "properties": {
+            "fetch_version": true,
+            "display_mode": "context"
+          },
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} "
+        },
+        {
+          "type": "docker",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#E06C75",
+          "properties": {
+            "fetch_version": true,
+            "display_mode": "context"
+          },
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} "
+        },
+        {
+          "type": "aws",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#E06C75",
+          "properties": {
+            "fetch_version": true,
+            "display_mode": "context"
+          },
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} "
+        },
+        {
+          "type": "azure",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#E06C75",
+          "properties": {
+            "fetch_version": true,
+            "display_mode": "context"
+          },
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} "
+        },
+        {
+          "type": "gcloud",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#E06C75",
+          "properties": {
+            "fetch_version": true,
+            "display_mode": "context"
+          },
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} "
+        },
+        {
+          "type": "kubectl",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#E06C75",
+          "properties": {
+            "fetch_version": true,
+            "display_mode": "context"
+          },
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} "
+        },
+        {
+          "type": "executiontime",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#E06C75",
+          "properties": {
+            "threshold": 500,
+            "style": "round"
+          },
+          "template": " {{ .FormattedMs }} "
+        },
+        {
+          "type": "status",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#E06C75",
+          "properties": {
+            "success_icon": " ",
+            "error_icon": " ",
+            "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Success }}{{ end }} "
+          },
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Success }}{{ end }} "
+        }
+      ]
+    }
+  ]
+}

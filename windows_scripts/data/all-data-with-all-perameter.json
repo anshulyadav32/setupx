@@ -1,0 +1,1275 @@
+{
+"WindowsDevWorkstation": {
+"LTSVersion": "Windows 11 LTSC",
+"InstallCommand": {
+"Winget": "winget install",
+"Scoop": "scoop install",
+"NPM": "npm install -g",
+"APT": "sudo apt install -y"
+},
+"Path": {
+      "Scoop": "C:\\Users\\<username>\\scoop\\shims",
+      "Node": "C:\\Program Files\\nodejs",
+      "Python": "C:\\Users\\<username>\\AppData\\Local\\Programs\\Python\\Python39",
+      "DotNet": "C:\\Program Files\\dotnet",
+      "Flutter": "C:\\src\\flutter\\bin",
+      "AndroidSDK": "C:\\Users\\<username>\\AppData\\Local\\Android\\Sdk"
+},
+"CoreEnvironment": {
+"Tools": [
+        {
+          "name": "Windows Terminal",
+          "version": "1.20.3471.0",
+          "install": {
+            "winget": "Microsoft.WindowsTerminal",
+            "scoop": "windows-terminal",
+            "chocolatey": "microsoft-windows-terminal",
+            "manual": "https://github.com/microsoft/terminal/releases"
+          },
+          "paths": {
+            "winget": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsTerminal_*",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\windows-terminal\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\microsoft-windows-terminal",
+            "manual": "C:\\Users\\<username>\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe"
+          }
+        },
+        {
+          "name": "PowerToys",
+          "version": "0.78.0",
+          "install": {
+            "winget": "Microsoft.PowerToys",
+            "scoop": "powertoys",
+            "chocolatey": "powertoys",
+            "manual": "https://github.com/microsoft/PowerToys/releases"
+          },
+          "paths": {
+            "winget": "C:\\Program Files\\PowerToys",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\powertoys\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\powertoys",
+            "manual": "C:\\Program Files\\PowerToys"
+          }
+        },
+        {
+          "name": "PowerShell 7",
+          "version": "7.4.2",
+          "install": {
+            "winget": "Microsoft.PowerShell",
+            "scoop": "powershell",
+            "chocolatey": "powershell-core",
+            "manual": "https://github.com/PowerShell/PowerShell/releases"
+          },
+          "paths": {
+            "winget": "C:\\Program Files\\PowerShell\\7",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\powershell\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\powershell-core",
+            "manual": "C:\\Program Files\\PowerShell\\7"
+          }
+        },
+        {
+          "name": "Oh My Posh",
+          "version": "19.0.0",
+          "install": {
+            "winget": "JanDeDobbeleer.OhMyPosh",
+            "scoop": "oh-my-posh",
+            "chocolatey": "oh-my-posh",
+            "manual": "https://github.com/JanDeDobbeleer/OhMyPosh/releases"
+          },
+          "paths": {
+            "winget": "C:\\Users\\<username>\\AppData\\Local\\Programs\\oh-my-posh",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\oh-my-posh\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\oh-my-posh",
+            "manual": "C:\\Users\\<username>\\AppData\\Local\\Programs\\oh-my-posh"
+          }
+        },
+        {
+          "name": "WSL 2",
+          "version": "2.0.0",
+          "install": {
+            "winget": "builtin",
+            "manual": "wsl --install",
+            "powershell": "Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux"
+          },
+          "paths": {
+            "winget": "C:\\Windows\\System32\\wsl.exe",
+            "manual": "C:\\Windows\\System32\\wsl.exe",
+            "powershell": "C:\\Windows\\System32\\wsl.exe"
+          }
+        },
+        {
+          "name": "Scoop",
+          "version": "1.0.0",
+          "install": {
+            "powershell": "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser; Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression",
+            "manual": "https://scoop.sh/"
+          },
+          "paths": {
+            "powershell": "C:\\Users\\<username>\\scoop\\shims",
+            "manual": "C:\\Users\\<username>\\scoop\\shims"
+          }
+        },
+        {
+          "name": "fzf (Fuzzy Finder)",
+          "version": "0.50.0",
+          "install": {
+            "scoop": "fzf",
+            "chocolatey": "fzf",
+            "manual": "https://github.com/junegunn/fzf/releases"
+          },
+          "paths": {
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\fzf\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\fzf",
+            "manual": "C:\\Users\\<username>\\AppData\\Local\\Programs\\fzf"
+          }
+        },
+        {
+          "name": "Nerd Fonts",
+          "version": "3.2.1",
+          "install": {
+            "scoop": ["cascadia-code", "firacode", "jetbrains-mono"],
+            "chocolatey": ["cascadia-code", "firacode"],
+            "manual": "https://www.nerdfonts.com/font-downloads"
+          },
+          "paths": {
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\cascadia-code\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\cascadia-code",
+            "manual": "C:\\Users\\<username>\\AppData\\Local\\Microsoft\\Windows\\Fonts"
+          }
+        },
+        {
+          "name": "tmux (via WSL)",
+          "version": "3.4",
+          "install": {
+            "APT": "sudo apt install tmux",
+            "snap": "sudo snap install tmux",
+            "manual": "https://github.com/tmux/tmux/releases"
+          },
+          "paths": {
+            "APT": "/usr/bin/tmux",
+            "snap": "/snap/bin/tmux",
+            "manual": "/usr/local/bin/tmux"
+          }
+        }
+]
+},
+"EditorsIDEs": {
+"Tools": [
+        {
+          "name": "Cursor (AI Editor)",
+          "version": "0.42.0",
+          "install": {
+            "winget": "Cursor.Cursor",
+            "scoop": "cursor",
+            "chocolatey": "cursor",
+            "manual": "https://cursor.sh/"
+          },
+          "paths": {
+            "winget": "C:\\Users\\<username>\\AppData\\Local\\Programs\\cursor",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\cursor\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\cursor",
+            "manual": "C:\\Users\\<username>\\AppData\\Local\\Programs\\cursor"
+          }
+        },
+        {
+          "name": "Visual Studio Code",
+          "version": "1.86.0",
+          "install": {
+            "winget": "Microsoft.VisualStudioCode",
+            "scoop": "vscode",
+            "chocolatey": "vscode",
+            "manual": "https://code.visualstudio.com/download"
+          },
+          "paths": {
+            "winget": "C:\\Users\\<username>\\AppData\\Local\\Programs\\Microsoft VS Code",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\vscode\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\vscode",
+            "manual": "C:\\Users\\<username>\\AppData\\Local\\Programs\\Microsoft VS Code"
+          }
+        },
+        {
+          "name": "Visual Studio 2022 Community",
+          "version": "17.8.6",
+          "install": {
+            "winget": "Microsoft.VisualStudio.2022.Community",
+            "chocolatey": "visualstudio2022community",
+            "manual": "https://visualstudio.microsoft.com/downloads/"
+          },
+          "paths": {
+            "winget": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\visualstudio2022community",
+            "manual": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community"
+          }
+        },
+        {
+          "name": "Visual Studio 2022 Professional",
+          "version": "17.8.6",
+          "install": {
+            "winget": "Microsoft.VisualStudio.2022.Professional",
+            "chocolatey": "visualstudio2022professional",
+            "manual": "https://visualstudio.microsoft.com/downloads/"
+          },
+          "paths": {
+            "winget": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\visualstudio2022professional",
+            "manual": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional"
+          }
+        },
+        {
+          "name": "Visual Studio 2022 Enterprise",
+          "version": "17.8.6",
+          "install": {
+            "winget": "Microsoft.VisualStudio.2022.Enterprise",
+            "chocolatey": "visualstudio2022enterprise",
+            "manual": "https://visualstudio.microsoft.com/downloads/"
+          },
+          "paths": {
+            "winget": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\visualstudio2022enterprise",
+            "manual": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise"
+          }
+        },
+        {
+          "name": "Notepad++",
+          "version": "8.6.4",
+          "install": {
+            "winget": "Notepad++.Notepad++",
+            "scoop": "notepadplusplus",
+            "chocolatey": "notepadplusplus",
+            "manual": "https://notepad-plus-plus.org/downloads/"
+          },
+          "paths": {
+            "winget": "C:\\Program Files\\Notepad++",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\notepadplusplus\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\notepadplusplus",
+            "manual": "C:\\Program Files\\Notepad++"
+          }
+        },
+        {
+          "name": "JetBrains Toolbox IDEs",
+          "version": "2.0.1",
+          "install": {
+            "winget": "JetBrains.Toolbox",
+            "scoop": "jetbrains-toolbox",
+            "chocolatey": "jetbrainstoolbox",
+            "manual": "https://www.jetbrains.com/toolbox-app/"
+          },
+          "paths": {
+            "winget": "C:\\Users\\<username>\\AppData\\Local\\JetBrains\\Toolbox",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\jetbrains-toolbox\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\jetbrainstoolbox",
+            "manual": "C:\\Users\\<username>\\AppData\\Local\\JetBrains\\Toolbox"
+          }
+        }
+]
+},
+"Browsers": {
+"Tools": [
+        {
+          "name": "Microsoft Edge Stable",
+          "version": "120.0.2210.144",
+          "install": {
+            "winget": "Microsoft.Edge",
+            "scoop": "microsoft-edge",
+            "chocolatey": "microsoft-edge",
+            "manual": "https://www.microsoft.com/edge"
+          },
+          "paths": {
+            "winget": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\microsoft-edge\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\microsoft-edge",
+            "manual": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application"
+          }
+        },
+        {
+          "name": "Microsoft Edge Dev",
+          "version": "122.0.2361.0",
+          "install": {
+            "winget": "Microsoft.Edge.Dev",
+            "scoop": "microsoft-edge-dev",
+            "chocolatey": "microsoft-edge-dev",
+            "manual": "https://www.microsoft.com/edge/dev"
+          },
+          "paths": {
+            "winget": "C:\\Program Files (x86)\\Microsoft\\Edge Dev\\Application",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\microsoft-edge-dev\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\microsoft-edge-dev",
+            "manual": "C:\\Program Files (x86)\\Microsoft\\Edge Dev\\Application"
+          }
+        },
+        {
+          "name": "Google Chrome",
+          "version": "120.0.6099.216",
+          "install": {
+            "winget": "Google.Chrome",
+            "scoop": "googlechrome",
+            "chocolatey": "googlechrome",
+            "manual": "https://www.google.com/chrome/"
+          },
+          "paths": {
+            "winget": "C:\\Program Files\\Google\\Chrome\\Application",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\googlechrome\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\googlechrome",
+            "manual": "C:\\Program Files\\Google\\Chrome\\Application"
+          }
+        },
+        {
+          "name": "Chrome Canary",
+          "version": "122.0.6251.0",
+          "install": {
+            "winget": "Google.Chrome.Canary",
+            "scoop": "googlechrome-canary",
+            "chocolatey": "googlechrome-canary",
+            "manual": "https://www.google.com/chrome/canary/"
+          },
+          "paths": {
+            "winget": "C:\\Program Files\\Google\\Chrome SxS\\Application",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\googlechrome-canary\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\googlechrome-canary",
+            "manual": "C:\\Program Files\\Google\\Chrome SxS\\Application"
+          }
+        },
+        {
+          "name": "Mozilla Firefox",
+          "version": "121.0.1",
+          "install": {
+            "winget": "Mozilla.Firefox",
+            "scoop": "firefox",
+            "chocolatey": "firefox",
+            "manual": "https://www.mozilla.org/firefox/"
+          },
+          "paths": {
+            "winget": "C:\\Program Files\\Mozilla Firefox",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\firefox\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\firefox",
+            "manual": "C:\\Program Files\\Mozilla Firefox"
+          }
+        },
+        {
+          "name": "Firefox Developer",
+          "version": "122.0b9",
+          "install": {
+            "winget": "Mozilla.Firefox.DeveloperEdition",
+            "scoop": "firefox-developer",
+            "chocolatey": "firefox-developer",
+            "manual": "https://www.mozilla.org/firefox/developer/"
+          },
+          "paths": {
+            "winget": "C:\\Program Files\\Firefox Developer Edition",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\firefox-developer\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\firefox-developer",
+            "manual": "C:\\Program Files\\Firefox Developer Edition"
+          }
+        }
+]
+},
+"CrossPlatformMobile": {
+"Tools": [
+        {
+          "name": "Flutter SDK",
+          "version": "3.24.0",
+          "install": {
+            "winget": "Flutter.Flutter",
+            "scoop": "flutter",
+            "chocolatey": "flutter",
+            "manual": "https://docs.flutter.dev/get-started/install/windows"
+          },
+          "paths": {
+            "winget": "C:\\Users\\<username>\\AppData\\Local\\Programs\\flutter",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\flutter\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\flutter",
+            "manual": "C:\\src\\flutter"
+          }
+        },
+        {
+          "name": "Android Studio",
+          "version": "2023.3.1",
+          "install": {
+            "winget": "Google.AndroidStudio",
+            "scoop": "android-studio",
+            "chocolatey": "androidstudio",
+            "manual": "https://developer.android.com/studio"
+          },
+          "paths": {
+            "winget": "C:\\Program Files\\Android\\Android Studio",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\android-studio\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\androidstudio",
+            "manual": "C:\\Program Files\\Android\\Android Studio"
+          }
+        },
+        {
+          "name": "Android SDK / Platform Tools",
+          "version": "34.0.5",
+          "install": {
+            "winget": "Google.AndroidSDK",
+            "scoop": "android-sdk",
+            "chocolatey": "android-sdk",
+            "manual": "https://developer.android.com/studio/command-line"
+          },
+          "paths": {
+            "winget": "C:\\Users\\<username>\\AppData\\Local\\Android\\Sdk",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\android-sdk\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\android-sdk",
+            "manual": "C:\\Users\\<username>\\AppData\\Local\\Android\\Sdk"
+          }
+        },
+        {
+          "name": "React Native CLI",
+          "version": "12.3.0",
+          "install": {
+            "npm": "react-native-cli",
+            "yarn": "yarn global add react-native-cli",
+            "pnpm": "pnpm add -g react-native-cli",
+            "manual": "https://reactnative.dev/docs/environment-setup"
+          },
+          "paths": {
+            "npm": "C:\\Users\\<username>\\AppData\\Roaming\\npm",
+            "yarn": "C:\\Users\\<username>\\AppData\\Local\\Yarn\\Data\\global\\node_modules",
+            "pnpm": "C:\\Users\\<username>\\AppData\\Local\\pnpm",
+            "manual": "C:\\Users\\<username>\\AppData\\Roaming\\npm"
+          }
+        },
+        {
+          "name": "Expo CLI",
+          "version": "7.0.0",
+          "install": {
+            "npm": "expo-cli",
+            "yarn": "yarn global add expo-cli",
+            "pnpm": "pnpm add -g expo-cli",
+            "manual": "https://docs.expo.dev/get-started/installation/"
+          },
+          "paths": {
+            "npm": "C:\\Users\\<username>\\AppData\\Roaming\\npm",
+            "yarn": "C:\\Users\\<username>\\AppData\\Local\\Yarn\\Data\\global\\node_modules",
+            "pnpm": "C:\\Users\\<username>\\AppData\\Local\\pnpm",
+            "manual": "C:\\Users\\<username>\\AppData\\Roaming\\npm"
+          }
+        },
+        {
+          "name": ".NET MAUI/Xamarin",
+          "version": "8.0.0",
+          "install": {
+            "winget": "Microsoft.DotNet.SDK.8",
+            "chocolatey": "dotnet-sdk",
+            "manual": "https://docs.microsoft.com/en-us/dotnet/maui/get-started/installation"
+          },
+          "paths": {
+            "winget": "C:\\Program Files\\dotnet",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\dotnet-sdk",
+            "manual": "C:\\Program Files\\dotnet"
+          }
+        }
+]
+},
+"WebBackendRuntimes": {
+"Tools": [
+        {
+          "name": "Node.js LTS",
+          "version": "20.11.0",
+          "install": {
+            "winget": "OpenJS.NodeJS.LTS",
+            "scoop": "nodejs-lts",
+            "chocolatey": "nodejs-lts",
+            "manual": "https://nodejs.org/"
+          },
+          "paths": {
+            "winget": "C:\\Program Files\\nodejs",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\nodejs-lts\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\nodejs-lts",
+            "manual": "C:\\Program Files\\nodejs"
+          }
+        },
+        {
+          "name": "pnpm",
+          "version": "8.15.0",
+          "install": {
+            "npm": "pnpm",
+            "yarn": "yarn global add pnpm",
+            "scoop": "pnpm",
+            "chocolatey": "pnpm",
+            "manual": "https://pnpm.io/installation"
+          },
+          "paths": {
+            "npm": "C:\\Users\\<username>\\AppData\\Roaming\\npm",
+            "yarn": "C:\\Users\\<username>\\AppData\\Local\\Yarn\\Data\\global\\node_modules",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\pnpm\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\pnpm",
+            "manual": "C:\\Users\\<username>\\AppData\\Local\\pnpm"
+          }
+        },
+        {
+          "name": "Yarn",
+          "version": "4.0.2",
+          "install": {
+            "npm": "yarn",
+            "scoop": "yarn",
+            "chocolatey": "yarn",
+            "manual": "https://yarnpkg.com/getting-started/install"
+          },
+          "paths": {
+            "npm": "C:\\Users\\<username>\\AppData\\Roaming\\npm",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\yarn\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\yarn",
+            "manual": "C:\\Users\\<username>\\AppData\\Local\\Yarn"
+          }
+        },
+        {
+          "name": "nvm-windows",
+          "version": "1.1.12",
+          "install": {
+            "winget": "CoreyButler.NVMforWindows",
+            "scoop": "nvm",
+            "chocolatey": "nvm",
+            "manual": "https://github.com/coreybutler/nvm-windows"
+          },
+          "paths": {
+            "winget": "C:\\Users\\<username>\\AppData\\Roaming\\nvm",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\nvm\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\nvm",
+            "manual": "C:\\Users\\<username>\\AppData\\Roaming\\nvm"
+          }
+        },
+        {
+          "name": ".NET SDK 8",
+          "version": "8.0.100",
+          "install": {
+            "winget": "Microsoft.DotNet.SDK.8",
+            "scoop": "dotnet-sdk",
+            "chocolatey": "dotnet-sdk",
+            "manual": "https://dotnet.microsoft.com/download"
+          },
+          "paths": {
+            "winget": "C:\\Program Files\\dotnet",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\dotnet-sdk\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\dotnet-sdk",
+            "manual": "C:\\Program Files\\dotnet"
+          }
+        },
+        {
+          "name": "Python 3",
+          "version": "3.12.1",
+          "install": {
+            "winget": "Python.Python.3",
+            "scoop": "python",
+            "chocolatey": "python",
+            "manual": "https://www.python.org/downloads/"
+          },
+          "paths": {
+            "winget": "C:\\Users\\<username>\\AppData\\Local\\Programs\\Python\\Python312",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\python\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\python",
+            "manual": "C:\\Users\\<username>\\AppData\\Local\\Programs\\Python\\Python312"
+          }
+        },
+        {
+          "name": "PHP",
+          "version": "8.3.0",
+          "install": {
+            "scoop": "php",
+            "chocolatey": "php",
+            "winget": "PHP.PHP",
+            "manual": "https://windows.php.net/download/"
+          },
+          "paths": {
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\php\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\php",
+            "winget": "C:\\Program Files\\PHP",
+            "manual": "C:\\Program Files\\PHP"
+          }
+        }
+]
+},
+"ContainersVirtualization": {
+"Tools": [
+        {
+          "name": "Docker Desktop",
+          "version": "4.28.0",
+          "install": {
+            "winget": "Docker.DockerDesktop",
+            "scoop": "docker",
+            "chocolatey": "docker-desktop",
+            "manual": "https://www.docker.com/products/docker-desktop/"
+          },
+          "paths": {
+            "winget": "C:\\Program Files\\Docker\\Docker",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\docker\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\docker-desktop",
+            "manual": "C:\\Program Files\\Docker\\Docker"
+          }
+        },
+        {
+          "name": "Docker Compose",
+          "version": "2.24.0",
+          "install": {
+            "scoop": "docker-compose",
+            "chocolatey": "docker-compose",
+            "winget": "Docker.Compose",
+            "manual": "https://docs.docker.com/compose/install/"
+          },
+          "paths": {
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\docker-compose\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\docker-compose",
+            "winget": "C:\\Program Files\\Docker\\Docker\\resources\\bin",
+            "manual": "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+          }
+        },
+        {
+          "name": "Kubernetes kubectl",
+          "version": "1.30.0",
+          "install": {
+            "winget": "Kubernetes.kubectl",
+            "scoop": "kubectl",
+            "chocolatey": "kubernetes-cli",
+            "manual": "https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/"
+          },
+          "paths": {
+            "winget": "C:\\Users\\<username>\\AppData\\Local\\Programs\\kubectl",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\kubectl\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\kubernetes-cli",
+            "manual": "C:\\Users\\<username>\\AppData\\Local\\Programs\\kubectl"
+          }
+        },
+        {
+          "name": "Minikube",
+          "version": "1.32.0",
+          "install": {
+            "winget": "Kubernetes.minikube",
+            "scoop": "minikube",
+            "chocolatey": "minikube",
+            "manual": "https://minikube.sigs.k8s.io/docs/start/"
+          },
+          "paths": {
+            "winget": "C:\\Users\\<username>\\AppData\\Local\\Programs\\minikube",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\minikube\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\minikube",
+            "manual": "C:\\Users\\<username>\\AppData\\Local\\Programs\\minikube"
+          }
+        },
+        {
+          "name": "Lens (K8s IDE)",
+          "version": "2024.1.0",
+          "install": {
+            "winget": "Mirantis.Lens",
+            "scoop": "lens",
+            "chocolatey": "lens",
+            "manual": "https://k8slens.dev/"
+          },
+          "paths": {
+            "winget": "C:\\Users\\<username>\\AppData\\Local\\Programs\\Lens",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\lens\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\lens",
+            "manual": "C:\\Users\\<username>\\AppData\\Local\\Programs\\Lens"
+          }
+        },
+        {
+          "name": "MinIO (local S3)",
+          "version": "2024.1.0",
+          "install": {
+            "scoop": "minio",
+            "chocolatey": "minio",
+            "manual": "https://min.io/download"
+          },
+          "paths": {
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\minio\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\minio",
+            "manual": "C:\\Users\\<username>\\AppData\\Local\\Programs\\minio"
+          }
+        }
+]
+},
+"Databases": {
+"Tools": [
+        {
+          "name": "PostgreSQL",
+          "version": "16.1",
+          "install": {
+            "scoop": "postgresql",
+            "chocolatey": "postgresql",
+            "winget": "PostgreSQL.PostgreSQL",
+            "manual": "https://www.postgresql.org/download/windows/"
+          },
+          "paths": {
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\postgresql\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\postgresql",
+            "winget": "C:\\Program Files\\PostgreSQL\\16",
+            "manual": "C:\\Program Files\\PostgreSQL\\16"
+          }
+        },
+        {
+          "name": "MySQL",
+          "version": "8.0.36",
+          "install": {
+            "scoop": "mysql",
+            "chocolatey": "mysql",
+            "winget": "Oracle.MySQL",
+            "manual": "https://dev.mysql.com/downloads/mysql/"
+          },
+          "paths": {
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\mysql\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\mysql",
+            "winget": "C:\\Program Files\\MySQL\\MySQL Server 8.0",
+            "manual": "C:\\Program Files\\MySQL\\MySQL Server 8.0"
+          }
+        },
+        {
+          "name": "MariaDB",
+          "version": "11.2.2",
+          "install": {
+            "scoop": "mariadb",
+            "chocolatey": "mariadb",
+            "winget": "MariaDB.MariaDB",
+            "manual": "https://mariadb.org/download/"
+          },
+          "paths": {
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\mariadb\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\mariadb",
+            "winget": "C:\\Program Files\\MariaDB 11.2",
+            "manual": "C:\\Program Files\\MariaDB 11.2"
+          }
+        },
+        {
+          "name": "MongoDB",
+          "version": "7.0.5",
+          "install": {
+            "scoop": "mongodb",
+            "chocolatey": "mongodb",
+            "winget": "MongoDB.Server",
+            "manual": "https://www.mongodb.com/try/download/community"
+          },
+          "paths": {
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\mongodb\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\mongodb",
+            "winget": "C:\\Program Files\\MongoDB\\Server\\7.0",
+            "manual": "C:\\Program Files\\MongoDB\\Server\\7.0"
+          }
+        },
+        {
+          "name": "Redis",
+          "version": "7.2.4",
+          "install": {
+            "scoop": "redis",
+            "chocolatey": "redis-64",
+            "winget": "Redis.Redis",
+            "manual": "https://redis.io/download"
+          },
+          "paths": {
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\redis\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\redis-64",
+            "winget": "C:\\Program Files\\Redis",
+            "manual": "C:\\Program Files\\Redis"
+          }
+        },
+        {
+          "name": "SQLite",
+          "version": "3.45.0",
+          "install": {
+            "scoop": "sqlite",
+            "chocolatey": "sqlite",
+            "winget": "SQLite.SQLite",
+            "manual": "https://www.sqlite.org/download.html"
+          },
+          "paths": {
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\sqlite\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\sqlite",
+            "winget": "C:\\Program Files\\SQLite",
+            "manual": "C:\\Program Files\\SQLite"
+          }
+        }
+]
+},
+"CloudCLIs": {
+"Tools": [
+        {
+          "name": "AWS CLI v2",
+          "version": "2.15.0",
+          "install": {
+            "winget": "Amazon.AWSCLI",
+            "scoop": "aws",
+            "chocolatey": "awscli",
+            "pip": "pip install awscli",
+            "manual": "https://aws.amazon.com/cli/"
+          },
+          "paths": {
+            "winget": "C:\\Program Files\\Amazon\\AWSCLIV2",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\aws\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\awscli",
+            "pip": "C:\\Users\\<username>\\AppData\\Local\\Programs\\Python\\Python312\\Scripts",
+            "manual": "C:\\Program Files\\Amazon\\AWSCLIV2"
+          }
+        },
+        {
+          "name": "Azure CLI",
+          "version": "2.57.0",
+          "install": {
+            "winget": "Microsoft.AzureCLI",
+            "scoop": "azure-cli",
+            "chocolatey": "azure-cli",
+            "pip": "pip install azure-cli",
+            "manual": "https://docs.microsoft.com/en-us/cli/azure/install-azure-cli"
+          },
+          "paths": {
+            "winget": "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\azure-cli\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\azure-cli",
+            "pip": "C:\\Users\\<username>\\AppData\\Local\\Programs\\Python\\Python312\\Scripts",
+            "manual": "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+          }
+        },
+        {
+          "name": "Google Cloud SDK (gcloud)",
+          "version": "456.0.0",
+          "install": {
+            "winget": "Google.CloudSDK",
+            "scoop": "google-cloud-sdk",
+            "chocolatey": "gcloudsdk",
+            "manual": "https://cloud.google.com/sdk/docs/install"
+          },
+          "paths": {
+            "winget": "C:\\Program Files (x86)\\Google\\Cloud SDK\\google-cloud-sdk\\bin",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\google-cloud-sdk\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\gcloudsdk",
+            "manual": "C:\\Program Files (x86)\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+          }
+        },
+        {
+          "name": "Firebase Tools",
+          "version": "13.0.0",
+          "install": {
+            "npm": "firebase-tools",
+            "yarn": "yarn global add firebase-tools",
+            "pnpm": "pnpm add -g firebase-tools",
+            "manual": "https://firebase.google.com/docs/cli"
+          },
+          "paths": {
+            "npm": "C:\\Users\\<username>\\AppData\\Roaming\\npm",
+            "yarn": "C:\\Users\\<username>\\AppData\\Local\\Yarn\\Data\\global\\node_modules",
+            "pnpm": "C:\\Users\\<username>\\AppData\\Local\\pnpm",
+            "manual": "C:\\Users\\<username>\\AppData\\Roaming\\npm"
+          }
+        },
+        {
+          "name": "Vercel CLI",
+          "version": "33.0.0",
+          "install": {
+            "npm": "vercel",
+            "yarn": "yarn global add vercel",
+            "pnpm": "pnpm add -g vercel",
+            "manual": "https://vercel.com/cli"
+          },
+          "paths": {
+            "npm": "C:\\Users\\<username>\\AppData\\Roaming\\npm",
+            "yarn": "C:\\Users\\<username>\\AppData\\Local\\Yarn\\Data\\global\\node_modules",
+            "pnpm": "C:\\Users\\<username>\\AppData\\Local\\pnpm",
+            "manual": "C:\\Users\\<username>\\AppData\\Roaming\\npm"
+          }
+        },
+        {
+          "name": "Netlify CLI",
+          "version": "17.0.0",
+          "install": {
+            "npm": "netlify-cli",
+            "yarn": "yarn global add netlify-cli",
+            "pnpm": "pnpm add -g netlify-cli",
+            "manual": "https://docs.netlify.com/cli/get-started/"
+          },
+          "paths": {
+            "npm": "C:\\Users\\<username>\\AppData\\Roaming\\npm",
+            "yarn": "C:\\Users\\<username>\\AppData\\Local\\Yarn\\Data\\global\\node_modules",
+            "pnpm": "C:\\Users\\<username>\\AppData\\Local\\pnpm",
+            "manual": "C:\\Users\\<username>\\AppData\\Roaming\\npm"
+          }
+        },
+        {
+          "name": "Heroku CLI",
+          "version": "8.7.0",
+          "install": {
+            "winget": "HerokuCLI.HerokuCLI",
+            "scoop": "heroku",
+            "chocolatey": "heroku-cli",
+            "manual": "https://devcenter.heroku.com/articles/heroku-cli"
+          },
+          "paths": {
+            "winget": "C:\\Users\\<username>\\AppData\\Local\\Programs\\heroku",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\heroku\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\heroku-cli",
+            "manual": "C:\\Users\\<username>\\AppData\\Local\\Programs\\heroku"
+          }
+        },
+        {
+          "name": "DigitalOcean doctl",
+          "version": "1.101.0",
+          "install": {
+            "winget": "DigitalOcean.doctl",
+            "scoop": "doctl",
+            "chocolatey": "doctl",
+            "manual": "https://docs.digitalocean.com/reference/doctl/how-to/install/"
+          },
+          "paths": {
+            "winget": "C:\\Users\\<username>\\AppData\\Local\\Programs\\doctl",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\doctl\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\doctl",
+            "manual": "C:\\Users\\<username>\\AppData\\Local\\Programs\\doctl"
+          }
+        },
+        {
+          "name": "Linode CLI",
+          "version": "5.30.0",
+          "install": {
+            "winget": "Linode.LinodeCLI",
+            "scoop": "linode-cli",
+            "chocolatey": "linode-cli",
+            "pip": "pip install linode-cli",
+            "manual": "https://www.linode.com/docs/guides/linode-cli/"
+          },
+          "paths": {
+            "winget": "C:\\Users\\<username>\\AppData\\Local\\Programs\\linode-cli",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\linode-cli\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\linode-cli",
+            "pip": "C:\\Users\\<username>\\AppData\\Local\\Programs\\Python\\Python312\\Scripts",
+            "manual": "C:\\Users\\<username>\\AppData\\Local\\Programs\\linode-cli"
+          }
+        },
+        {
+          "name": "Terraform",
+          "version": "1.6.6",
+          "install": {
+            "winget": "Hashicorp.Terraform",
+            "scoop": "terraform",
+            "chocolatey": "terraform",
+            "manual": "https://www.terraform.io/downloads"
+          },
+          "paths": {
+            "winget": "C:\\Users\\<username>\\AppData\\Local\\Programs\\terraform",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\terraform\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\terraform",
+            "manual": "C:\\Users\\<username>\\AppData\\Local\\Programs\\terraform"
+          }
+        },
+        {
+          "name": "Pulumi",
+          "version": "3.100.0",
+          "install": {
+            "winget": "Pulumi.Pulumi",
+            "scoop": "pulumi",
+            "chocolatey": "pulumi",
+            "manual": "https://www.pulumi.com/docs/get-started/install/"
+          },
+          "paths": {
+            "winget": "C:\\Users\\<username>\\AppData\\Local\\Programs\\pulumi",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\pulumi\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\pulumi",
+            "manual": "C:\\Users\\<username>\\AppData\\Local\\Programs\\pulumi"
+          }
+        }
+      ]
+    },
+    "AICodeGenerationCLIs": {
+"Tools": [
+        {
+          "name": "Continue CLI",
+          "version": "0.6.0",
+          "install": {
+            "npm": "@continuedev/continue",
+            "yarn": "yarn global add @continuedev/continue",
+            "pnpm": "pnpm add -g @continuedev/continue",
+            "manual": "https://github.com/continuedev/continue"
+          },
+          "paths": {
+            "npm": "C:\\Users\\<username>\\AppData\\Roaming\\npm",
+            "yarn": "C:\\Users\\<username>\\AppData\\Local\\Yarn\\Data\\global\\node_modules",
+            "pnpm": "C:\\Users\\<username>\\AppData\\Local\\pnpm",
+            "manual": "C:\\Users\\<username>\\AppData\\Roaming\\npm"
+          }
+        },
+        {
+          "name": "GitHub Copilot CLI",
+          "version": "1.0.0",
+          "install": {
+            "npm": "@github/copilot-cli",
+            "yarn": "yarn global add @github/copilot-cli",
+            "pnpm": "pnpm add -g @github/copilot-cli",
+            "manual": "https://github.com/github/copilot-cli"
+          },
+          "paths": {
+            "npm": "C:\\Users\\<username>\\AppData\\Roaming\\npm",
+            "yarn": "C:\\Users\\<username>\\AppData\\Local\\Yarn\\Data\\global\\node_modules",
+            "pnpm": "C:\\Users\\<username>\\AppData\\Local\\pnpm",
+            "manual": "C:\\Users\\<username>\\AppData\\Roaming\\npm"
+          }
+        },
+        {
+          "name": "OpenAI CLI",
+          "version": "4.20.0",
+          "install": {
+            "npm": "openai",
+            "yarn": "yarn global add openai",
+            "pnpm": "pnpm add -g openai",
+            "pip": "pip install openai",
+            "manual": "https://github.com/openai/openai-python"
+          },
+          "paths": {
+            "npm": "C:\\Users\\<username>\\AppData\\Roaming\\npm",
+            "yarn": "C:\\Users\\<username>\\AppData\\Local\\Yarn\\Data\\global\\node_modules",
+            "pnpm": "C:\\Users\\<username>\\AppData\\Local\\pnpm",
+            "pip": "C:\\Users\\<username>\\AppData\\Local\\Programs\\Python\\Python312\\Scripts",
+            "manual": "C:\\Users\\<username>\\AppData\\Roaming\\npm"
+          }
+        },
+        {
+          "name": "Google Gemini Client",
+          "version": "0.2.0",
+          "install": {
+            "npm": "@google/generative-ai",
+            "yarn": "yarn global add @google/generative-ai",
+            "pnpm": "pnpm add -g @google/generative-ai",
+            "pip": "pip install google-generativeai",
+            "manual": "https://github.com/google/generative-ai-python"
+          },
+          "paths": {
+            "npm": "C:\\Users\\<username>\\AppData\\Roaming\\npm",
+            "yarn": "C:\\Users\\<username>\\AppData\\Local\\Yarn\\Data\\global\\node_modules",
+            "pnpm": "C:\\Users\\<username>\\AppData\\Local\\pnpm",
+            "pip": "C:\\Users\\<username>\\AppData\\Local\\Programs\\Python\\Python312\\Scripts",
+            "manual": "C:\\Users\\<username>\\AppData\\Roaming\\npm"
+          }
+        },
+        {
+          "name": "Grok CLI",
+          "version": "1.0.0",
+          "install": {
+            "npm": "xai-cli",
+            "yarn": "yarn global add xai-cli",
+            "pnpm": "pnpm add -g xai-cli",
+            "manual": "https://github.com/xai-org/xai-cli"
+          },
+          "paths": {
+            "npm": "C:\\Users\\<username>\\AppData\\Roaming\\npm",
+            "yarn": "C:\\Users\\<username>\\AppData\\Local\\Yarn\\Data\\global\\node_modules",
+            "pnpm": "C:\\Users\\<username>\\AppData\\Local\\pnpm",
+            "manual": "C:\\Users\\<username>\\AppData\\Roaming\\npm"
+          }
+        }
+]
+},
+"TestingQA": {
+"Tools": [
+        {
+          "name": "Playwright CLI",
+          "version": "1.40.0",
+          "install": {
+            "npm": "@playwright/test",
+            "yarn": "yarn add @playwright/test",
+            "pnpm": "pnpm add @playwright/test",
+            "manual": "https://playwright.dev/docs/intro"
+          },
+          "paths": {
+            "npm": "C:\\Users\\<username>\\AppData\\Roaming\\npm",
+            "yarn": "C:\\Users\\<username>\\AppData\\Local\\Yarn\\Data\\global\\node_modules",
+            "pnpm": "C:\\Users\\<username>\\AppData\\Local\\pnpm",
+            "manual": "C:\\Users\\<username>\\AppData\\Roaming\\npm"
+          }
+        },
+        {
+          "name": "Cypress",
+          "version": "13.6.0",
+          "install": {
+            "npm": "cypress",
+            "yarn": "yarn add cypress",
+            "pnpm": "pnpm add cypress",
+            "manual": "https://www.cypress.io/"
+          },
+          "paths": {
+            "npm": "C:\\Users\\<username>\\AppData\\Roaming\\npm",
+            "yarn": "C:\\Users\\<username>\\AppData\\Local\\Yarn\\Data\\global\\node_modules",
+            "pnpm": "C:\\Users\\<username>\\AppData\\Local\\pnpm",
+            "manual": "C:\\Users\\<username>\\AppData\\Roaming\\npm"
+          }
+        },
+        {
+          "name": "Jest",
+          "version": "29.7.0",
+          "install": {
+            "npm": "jest",
+            "yarn": "yarn add jest",
+            "pnpm": "pnpm add jest",
+            "manual": "https://jestjs.io/docs/getting-started"
+          },
+          "paths": {
+            "npm": "C:\\Users\\<username>\\AppData\\Roaming\\npm",
+            "yarn": "C:\\Users\\<username>\\AppData\\Local\\Yarn\\Data\\global\\node_modules",
+            "pnpm": "C:\\Users\\<username>\\AppData\\Local\\pnpm",
+            "manual": "C:\\Users\\<username>\\AppData\\Roaming\\npm"
+          }
+        },
+        {
+          "name": "Mocha",
+          "version": "10.2.0",
+          "install": {
+            "npm": "mocha",
+            "yarn": "yarn add mocha",
+            "pnpm": "pnpm add mocha",
+            "manual": "https://mochajs.org/"
+          },
+          "paths": {
+            "npm": "C:\\Users\\<username>\\AppData\\Roaming\\npm",
+            "yarn": "C:\\Users\\<username>\\AppData\\Local\\Yarn\\Data\\global\\node_modules",
+            "pnpm": "C:\\Users\\<username>\\AppData\\Local\\pnpm",
+            "manual": "C:\\Users\\<username>\\AppData\\Roaming\\npm"
+          }
+        },
+        {
+          "name": "Jasmine",
+          "version": "5.1.0",
+          "install": {
+            "npm": "jasmine",
+            "yarn": "yarn add jasmine",
+            "pnpm": "pnpm add jasmine",
+            "manual": "https://jasmine.github.io/"
+          },
+          "paths": {
+            "npm": "C:\\Users\\<username>\\AppData\\Roaming\\npm",
+            "yarn": "C:\\Users\\<username>\\AppData\\Local\\Yarn\\Data\\global\\node_modules",
+            "pnpm": "C:\\Users\\<username>\\AppData\\Local\\pnpm",
+            "manual": "C:\\Users\\<username>\\AppData\\Roaming\\npm"
+          }
+        },
+        {
+          "name": "Postman",
+          "version": "10.22.0",
+          "install": {
+            "winget": "Postman.Postman",
+            "scoop": "postman",
+            "chocolatey": "postman",
+            "manual": "https://www.postman.com/downloads/"
+          },
+          "paths": {
+            "winget": "C:\\Users\\<username>\\AppData\\Local\\Programs\\Postman",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\postman\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\postman",
+            "manual": "C:\\Users\\<username>\\AppData\\Local\\Programs\\Postman"
+          }
+        }
+]
+},
+"MonitoringLogging": {
+"Tools": [
+        {
+          "name": "htop / glances",
+          "install": {
+            "APT": "sudo apt install htop glances",
+            "snap": "sudo snap install htop glances",
+            "brew": "brew install htop glances",
+            "manual": "https://htop.dev/ https://nicolargo.github.io/glances/"
+          },
+          "paths": {
+            "APT": "/usr/bin/htop /usr/bin/glances",
+            "snap": "/snap/bin/htop /snap/bin/glances",
+            "brew": "/usr/local/bin/htop /usr/local/bin/glances",
+            "manual": "/usr/local/bin/htop /usr/local/bin/glances"
+          }
+        },
+        {
+          "name": "AWS CloudWatch CLI",
+          "install": {
+            "note": "via AWS CLI",
+            "pip": "pip install awscli",
+            "manual": "https://aws.amazon.com/cloudwatch/"
+          },
+          "paths": {
+            "note": "C:\\Program Files\\Amazon\\AWSCLIV2",
+            "pip": "C:\\Users\\<username>\\AppData\\Local\\Programs\\Python\\Python312\\Scripts",
+            "manual": "C:\\Program Files\\Amazon\\AWSCLIV2"
+          }
+        },
+        {
+          "name": "Azure Monitor CLI",
+          "install": {
+            "note": "via Azure CLI",
+            "pip": "pip install azure-cli",
+            "manual": "https://docs.microsoft.com/en-us/azure/azure-monitor/"
+          },
+          "paths": {
+            "note": "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin",
+            "pip": "C:\\Users\\<username>\\AppData\\Local\\Programs\\Python\\Python312\\Scripts",
+            "manual": "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin"
+          }
+        },
+        {
+          "name": "Google Operations Logging",
+          "install": {
+            "note": "via gcloud CLI",
+            "manual": "https://cloud.google.com/logging/docs"
+          },
+          "paths": {
+            "note": "C:\\Program Files (x86)\\Google\\Cloud SDK\\google-cloud-sdk\\bin",
+            "manual": "C:\\Program Files (x86)\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+          }
+        }
+]
+},
+"SecurityCredentialManagement": {
+"Tools": [
+        {
+          "name": "1Password CLI",
+          "install": {
+            "winget": "1Password.1PasswordCLI",
+            "scoop": "1password-cli",
+            "chocolatey": "1password-cli",
+            "manual": "https://developer.1password.com/docs/cli/get-started/"
+          },
+          "paths": {
+            "winget": "C:\\Users\\<username>\\AppData\\Local\\Programs\\1Password CLI",
+            "scoop": "C:\\Users\\<username>\\scoop\\apps\\1password-cli\\current",
+            "chocolatey": "C:\\ProgramData\\chocolatey\\lib\\1password-cli",
+            "manual": "C:\\Users\\<username>\\AppData\\Local\\Programs\\1Password CLI"
+          }
+        },
+        {
+          "name": "Bitwarden CLI",
+          "install": {
+            "winget": "Bitwarden.BitwardenCLI",
+            "scoop": "bitwarden-cli",
+            "chocolatey": "bitwarden-cli",
+            "manual": "https://bitwarden.com/help/cli/"
+          }
+        },
+        {
+          "name": "AWS Vault",
+          "install": {
+            "scoop": "aws-vault",
+            "chocolatey": "aws-vault",
+            "go": "go install github.com/99designs/aws-vault@latest",
+            "manual": "https://github.com/99designs/aws-vault"
+          }
+        },
+        {
+          "name": "Azure Key Vault CLI",
+          "install": {
+            "note": "via az keyvault commands",
+            "pip": "pip install azure-keyvault",
+            "manual": "https://docs.microsoft.com/en-us/azure/key-vault/"
+          }
+        }
+]
+},
+"ProductivityAutomation": {
+"Tools": [
+        {
+          "name": "AutoHotKey",
+          "install": {
+            "winget": "AutoHotkey.AutoHotkey",
+            "scoop": "autohotkey",
+            "chocolatey": "autohotkey",
+            "manual": "https://www.autohotkey.com/"
+          }
+        },
+        {
+          "name": "VS Code Extensions",
+          "install": {
+            "note": "Live Server, Prettier, ESLint, GitLens, Docker",
+            "vscode": "code --install-extension extension-name",
+            "manual": "https://marketplace.visualstudio.com/"
+          }
+        }
+]
+}
+}
+}

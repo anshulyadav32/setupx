@@ -1,0 +1,306 @@
+{
+  "flutter_gui_config": {
+    "version": "1.0.0",
+    "description": "Flutter GUI Configuration for Windows Development Toolkit",
+    "installation_order": [
+      {
+        "step": 1,
+        "name": "CLI Installer",
+        "description": "Install command line tools and package managers",
+        "components": [
+          "package-managers"
+        ],
+        "priority": "critical",
+        "required": true
+      },
+      {
+        "step": 2,
+        "name": "Package Manager Installation",
+        "description": "Install and configure package managers",
+        "components": [
+          "chocolatey",
+          "winget",
+          "scoop"
+        ],
+        "priority": "critical",
+        "required": true
+      },
+      {
+        "step": 3,
+        "name": "Basic Developer Tools",
+        "description": "Essential development tools",
+        "components": [
+          "git",
+          "github-cli",
+          "vscode"
+        ],
+        "priority": "high",
+        "required": true
+      },
+      {
+        "step": 4,
+        "name": "Web Development",
+        "description": "Web development stack",
+        "components": [
+          "nodejs",
+          "yarn",
+          "webpack",
+          "vite"
+        ],
+        "priority": "high",
+        "required": false
+      },
+      {
+        "step": 5,
+        "name": "Android Development",
+        "description": "Android development tools",
+        "components": [
+          "android-studio",
+          "android-sdk",
+          "adb"
+        ],
+        "priority": "high",
+        "required": false
+      },
+      {
+        "step": 6,
+        "name": "Windows Development",
+        "description": "Windows-specific development tools",
+        "components": [
+          "visual-studio",
+          "vscode",
+          "powershell"
+        ],
+        "priority": "medium",
+        "required": false
+      },
+      {
+        "step": 7,
+        "name": "AI Development",
+        "description": "Artificial Intelligence development tools",
+        "components": [
+          "python",
+          "tensorflow",
+          "pytorch",
+          "jupyter"
+        ],
+        "priority": "medium",
+        "required": false
+      },
+      {
+        "step": 8,
+        "name": "Container Development",
+        "description": "Container and orchestration tools",
+        "components": [
+          "docker",
+          "docker-compose",
+          "kubernetes"
+        ],
+        "priority": "medium",
+        "required": false
+      },
+      {
+        "step": 9,
+        "name": "Flutter Development",
+        "description": "Flutter cross-platform development",
+        "components": [
+          "flutter",
+          "dart",
+          "flutter-doctor"
+        ],
+        "priority": "high",
+        "required": false
+      },
+      {
+        "step": 10,
+        "name": "React Native Development",
+        "description": "React Native cross-platform development",
+        "components": [
+          "react-native",
+          "metro",
+          "hermes"
+        ],
+        "priority": "medium",
+        "required": false
+      },
+      {
+        "step": 11,
+        "name": "Server Development",
+        "description": "Server and backend development tools",
+        "components": [
+          "apache",
+          "nginx",
+          "xampp"
+        ],
+        "priority": "low",
+        "required": false
+      },
+      {
+        "step": 12,
+        "name": "Database Development",
+        "description": "Database management tools",
+        "components": [
+          "postgresql",
+          "mysql",
+          "mongodb"
+        ],
+        "priority": "low",
+        "required": false
+      }
+    ],
+    "categories": {
+      "package-managers": {
+        "name": "Package Managers",
+        "description": "Package management tools",
+        "components": [
+          "chocolatey",
+          "winget",
+          "scoop"
+        ],
+        "install_order": 1
+      },
+      "basic-development": {
+        "name": "Basic Development",
+        "description": "Essential development tools",
+        "components": [
+          "git",
+          "github-cli",
+          "vscode"
+        ],
+        "install_order": 3
+      },
+      "web-development": {
+        "name": "Web Development",
+        "description": "Web development stack",
+        "components": [
+          "nodejs",
+          "yarn",
+          "webpack",
+          "vite"
+        ],
+        "install_order": 4
+      },
+      "android-development": {
+        "name": "Android Development",
+        "description": "Android development tools",
+        "components": [
+          "android-studio",
+          "android-sdk",
+          "adb"
+        ],
+        "install_order": 5
+      },
+      "windows-development": {
+        "name": "Windows Development",
+        "description": "Windows-specific development tools",
+        "components": [
+          "visual-studio",
+          "vscode",
+          "powershell"
+        ],
+        "install_order": 6
+      },
+      "ai-development": {
+        "name": "AI Development",
+        "description": "Artificial Intelligence development tools",
+        "components": [
+          "python",
+          "tensorflow",
+          "pytorch",
+          "jupyter"
+        ],
+        "install_order": 7
+      },
+      "containers": {
+        "name": "Container Development",
+        "description": "Container and orchestration tools",
+        "components": [
+          "docker",
+          "docker-compose",
+          "kubernetes"
+        ],
+        "install_order": 8
+      },
+      "cross-platform-flutter": {
+        "name": "Flutter Development",
+        "description": "Flutter cross-platform development",
+        "components": [
+          "flutter",
+          "dart",
+          "flutter-doctor"
+        ],
+        "install_order": 9
+      },
+      "cross-platform-react-native": {
+        "name": "React Native Development",
+        "description": "React Native cross-platform development",
+        "components": [
+          "react-native",
+          "metro",
+          "hermes"
+        ],
+        "install_order": 10
+      },
+      "server-development": {
+        "name": "Server Development",
+        "description": "Server and backend development tools",
+        "components": [
+          "apache",
+          "nginx",
+          "xampp"
+        ],
+        "install_order": 11
+      },
+      "databases": {
+        "name": "Database Development",
+        "description": "Database management tools",
+        "components": [
+          "postgresql",
+          "mysql",
+          "mongodb"
+        ],
+        "install_order": 12
+      }
+    },
+    "gui_settings": {
+      "theme": "dark",
+      "language": "en",
+      "auto_install": false,
+      "show_progress": true,
+      "confirm_installations": true,
+      "log_level": "info",
+      "backup_before_install": true,
+      "rollback_on_error": true
+    },
+    "installation_options": {
+      "silent_mode": false,
+      "force_install": false,
+      "skip_dependencies": false,
+      "custom_paths": false,
+      "environment_setup": true,
+      "path_management": true
+    },
+    "dependencies": {
+      "chocolatey": [],
+      "winget": [],
+      "scoop": [],
+      "git": ["chocolatey", "winget"],
+      "github-cli": ["git"],
+      "vscode": ["chocolatey", "winget"],
+      "nodejs": ["chocolatey", "winget"],
+      "python": ["chocolatey", "winget"],
+      "flutter": ["git", "chocolatey"],
+      "dart": ["flutter"],
+      "android-studio": ["chocolatey", "winget"],
+      "docker": ["chocolatey", "winget"],
+      "postgresql": ["chocolatey", "winget"]
+    },
+    "validation": {
+      "check_requirements": true,
+      "verify_installations": true,
+      "test_functionality": true,
+      "validate_paths": true,
+      "check_versions": true
+    }
+  }
+}

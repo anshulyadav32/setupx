@@ -1,0 +1,481 @@
+{
+  "package-managers": {
+    "chocolatey": {
+      "name": "Chocolatey",
+      "executableNames": ["choco.exe", "choco"],
+      "versionCommands": ["choco --version"],
+      "testCommands": ["choco --version", "choco search chocolatey --limit-output", "choco list --local-only --limit-output"],
+      "installMethod": "script",
+      "installScript": "https://chocolatey.org/install.ps1",
+      "updateCommands": ["choco upgrade chocolatey -y"]
+    },
+    "winget": {
+      "name": "WinGet",
+      "executableNames": ["winget.exe", "winget"],
+      "versionCommands": ["winget --version"],
+      "testCommands": ["winget --version", "winget search notepad --count 1", "winget list --count 1"],
+      "installMethod": "builtin",
+      "updateCommands": ["winget upgrade --id Microsoft.AppInstaller"]
+    },
+    "scoop": {
+      "name": "Scoop",
+      "executableNames": ["scoop.exe", "scoop"],
+      "versionCommands": ["scoop --version"],
+      "testCommands": ["scoop --version", "scoop search git"],
+      "installMethod": "script",
+      "installScript": "https://get.scoop.sh",
+      "updateCommands": ["scoop update scoop"]
+    },
+    "npm": {
+      "name": "NPM",
+      "executableNames": ["npm.exe", "npm"],
+      "versionCommands": ["npm --version"],
+      "testCommands": ["npm --version", "npm list -g --depth=0"],
+      "installMethod": "builtin",
+      "updateCommands": ["npm install -g npm@latest"]
+    }
+  },
+  "web-development": {
+    "nodejs": {
+      "name": "Node.js",
+      "executableNames": ["node.exe", "node", "npm.exe", "npm"],
+      "versionCommands": ["node --version", "npm --version"],
+      "testCommands": ["node --version", "npm --version", "node -e \"console.log('Hello World')\""],
+      "wingetId": "OpenJS.NodeJS",
+      "chocoId": "nodejs",
+      "updateCommands": ["winget upgrade OpenJS.NodeJS"]
+    },
+    "yarn": {
+      "name": "Yarn",
+      "executableNames": ["yarn.exe", "yarn"],
+      "versionCommands": ["yarn --version"],
+      "testCommands": ["yarn --version", "yarn config get registry"],
+      "installMethod": "npm",
+      "installCommands": ["npm install -g yarn"],
+      "updateCommands": ["npm install -g yarn@latest"]
+    },
+    "webpack": {
+      "name": "Webpack",
+      "executableNames": ["webpack.exe", "webpack"],
+      "versionCommands": ["webpack --version"],
+      "testCommands": ["webpack --version", "webpack --help"],
+      "installMethod": "npm",
+      "installCommands": ["npm install -g webpack webpack-cli"],
+      "updateCommands": ["npm install -g webpack@latest webpack-cli@latest"]
+    },
+    "vite": {
+      "name": "Vite",
+      "executableNames": ["vite.exe", "vite"],
+      "versionCommands": ["vite --version"],
+      "testCommands": ["vite --version", "vite --help"],
+      "installMethod": "npm",
+      "installCommands": ["npm install -g vite"],
+      "updateCommands": ["npm install -g vite@latest"]
+    }
+  },
+  "android-development": {
+    "android-studio": {
+      "name": "Android Studio",
+      "executableNames": ["studio.exe"],
+      "versionCommands": [],
+      "testCommands": ["Test-Path \"${env:ProgramFiles}\\Android\\Android Studio\\bin\\studio.exe\""],
+      "wingetId": "Google.AndroidStudio",
+      "chocoId": "androidstudio",
+      "updateCommands": ["winget upgrade Google.AndroidStudio"]
+    },
+    "android-sdk": {
+      "name": "Android SDK",
+      "executableNames": ["sdkmanager.exe"],
+      "versionCommands": ["sdkmanager --version"],
+      "testCommands": ["sdkmanager --version", "sdkmanager --list"],
+      "installMethod": "android-studio",
+      "updateCommands": ["sdkmanager --update"]
+    },
+    "adb": {
+      "name": "Android Debug Bridge",
+      "executableNames": ["adb.exe", "adb"],
+      "versionCommands": ["adb version"],
+      "testCommands": ["adb version", "adb devices"],
+      "installMethod": "android-sdk",
+      "updateCommands": ["sdkmanager --update platform-tools"]
+    }
+  },
+  "cross-platform-flutter": {
+    "flutter": {
+      "name": "Flutter",
+      "executableNames": ["flutter.exe", "flutter"],
+      "versionCommands": ["flutter --version"],
+      "testCommands": ["flutter --version", "flutter doctor"],
+      "wingetId": "Google.Flutter",
+      "chocoId": "flutter",
+      "updateCommands": ["flutter upgrade"]
+    },
+    "dart": {
+      "name": "Dart",
+      "executableNames": ["dart.exe", "dart"],
+      "versionCommands": ["dart --version"],
+      "testCommands": ["dart --version", "dart --help"],
+      "installMethod": "flutter",
+      "updateCommands": ["flutter upgrade"]
+    },
+    "flutter-doctor": {
+      "name": "Flutter Doctor",
+      "executableNames": ["flutter.exe"],
+      "versionCommands": ["flutter doctor --version"],
+      "testCommands": ["flutter doctor", "flutter doctor --verbose"],
+      "installMethod": "flutter",
+      "updateCommands": ["flutter upgrade"]
+    }
+  },
+  "cross-platform-react-native": {
+    "react-native": {
+      "name": "React Native",
+      "executableNames": ["react-native.exe", "react-native"],
+      "versionCommands": ["react-native --version"],
+      "testCommands": ["react-native --version", "react-native --help"],
+      "installMethod": "npm",
+      "installCommands": ["npm install -g react-native-cli"],
+      "updateCommands": ["npm install -g react-native-cli@latest"]
+    },
+    "metro": {
+      "name": "Metro",
+      "executableNames": ["metro.exe", "metro"],
+      "versionCommands": ["metro --version"],
+      "testCommands": ["metro --version", "metro --help"],
+      "installMethod": "npm",
+      "installCommands": ["npm install -g metro"],
+      "updateCommands": ["npm install -g metro@latest"]
+    },
+    "hermes": {
+      "name": "Hermes",
+      "executableNames": ["hermes.exe", "hermes"],
+      "versionCommands": ["hermes --version"],
+      "testCommands": ["hermes --version", "hermes --help"],
+      "installMethod": "react-native",
+      "updateCommands": ["npm install -g hermes@latest"]
+    }
+  },
+  "backend-development": {
+    "python": {
+      "name": "Python",
+      "executableNames": ["python.exe", "python", "pip.exe", "pip"],
+      "versionCommands": ["python --version", "pip --version"],
+      "testCommands": ["python --version", "pip --version", "python -c \"print('Hello World')\""],
+      "wingetId": "Python.Python.3",
+      "chocoId": "python",
+      "updateCommands": ["winget upgrade Python.Python.3"]
+    },
+    "java": {
+      "name": "Java",
+      "executableNames": ["java.exe", "java", "javac.exe", "javac"],
+      "versionCommands": ["java --version", "javac --version"],
+      "testCommands": ["java --version", "javac --version", "java -version"],
+      "wingetId": "Oracle.JDK",
+      "chocoId": "openjdk",
+      "updateCommands": ["winget upgrade Oracle.JDK"]
+    },
+    "dotnet": {
+      "name": ".NET",
+      "executableNames": ["dotnet.exe", "dotnet"],
+      "versionCommands": ["dotnet --version"],
+      "testCommands": ["dotnet --version", "dotnet --info"],
+      "wingetId": "Microsoft.DotNet.SDK.8",
+      "chocoId": "dotnet",
+      "updateCommands": ["winget upgrade Microsoft.DotNet.SDK.8"]
+    },
+    "go": {
+      "name": "Go",
+      "executableNames": ["go.exe", "go"],
+      "versionCommands": ["go version"],
+      "testCommands": ["go version", "go env"],
+      "wingetId": "GoLang.Go",
+      "chocoId": "golang",
+      "updateCommands": ["winget upgrade GoLang.Go"]
+    },
+    "rust": {
+      "name": "Rust",
+      "executableNames": ["rustc.exe", "rustc", "cargo.exe", "cargo"],
+      "versionCommands": ["rustc --version", "cargo --version"],
+      "testCommands": ["rustc --version", "cargo --version", "cargo --help"],
+      "wingetId": "Rustlang.Rust.MSVC",
+      "chocoId": "rust",
+      "updateCommands": ["winget upgrade Rustlang.Rust.MSVC"]
+    }
+  },
+  "cloud-development": {
+    "aws-cli": {
+      "name": "AWS CLI",
+      "executableNames": ["aws.exe", "aws"],
+      "versionCommands": ["aws --version"],
+      "testCommands": ["aws --version", "aws configure list"],
+      "wingetId": "Amazon.AWSCLI",
+      "chocoId": "awscli",
+      "updateCommands": ["winget upgrade Amazon.AWSCLI"]
+    },
+    "azure-cli": {
+      "name": "Azure CLI",
+      "executableNames": ["az.exe", "az"],
+      "versionCommands": ["az --version"],
+      "testCommands": ["az --version", "az account show"],
+      "wingetId": "Microsoft.AzureCLI",
+      "chocoId": "azure-cli",
+      "updateCommands": ["winget upgrade Microsoft.AzureCLI"]
+    },
+    "gcloud": {
+      "name": "Google Cloud SDK",
+      "executableNames": ["gcloud.exe", "gcloud"],
+      "versionCommands": ["gcloud --version"],
+      "testCommands": ["gcloud --version", "gcloud config list"],
+      "wingetId": "Google.CloudSDK",
+      "chocoId": "gcloudsdk",
+      "updateCommands": ["winget upgrade Google.CloudSDK"]
+    },
+    "kubectl": {
+      "name": "Kubernetes CLI",
+      "executableNames": ["kubectl.exe", "kubectl"],
+      "versionCommands": ["kubectl version --client"],
+      "testCommands": ["kubectl version --client", "kubectl cluster-info"],
+      "wingetId": "Kubernetes.kubectl",
+      "chocoId": "kubernetes-cli",
+      "updateCommands": ["winget upgrade Kubernetes.kubectl"]
+    }
+  },
+  "windows-development": {
+    "visual-studio": {
+      "name": "Visual Studio",
+      "executableNames": ["devenv.exe"],
+      "versionCommands": [],
+      "testCommands": ["Test-Path \"${env:ProgramFiles}\\Microsoft Visual Studio\\2022\\*\Common7\\IDE\\devenv.exe\""],
+      "wingetId": "Microsoft.VisualStudio.2022.Community",
+      "chocoId": "visualstudio2022community",
+      "updateCommands": ["winget upgrade Microsoft.VisualStudio.2022.Community"]
+    },
+    "visual-studio-code": {
+      "name": "Visual Studio Code",
+      "executableNames": ["code.exe", "code"],
+      "versionCommands": ["code --version"],
+      "testCommands": ["code --version", "code --help"],
+      "wingetId": "Microsoft.VisualStudioCode",
+      "chocoId": "vscode",
+      "updateCommands": ["winget upgrade Microsoft.VisualStudioCode"]
+    },
+    "powershell": {
+      "name": "PowerShell",
+      "executableNames": ["powershell.exe", "pwsh.exe"],
+      "versionCommands": ["powershell --version", "pwsh --version"],
+      "testCommands": ["powershell --version", "pwsh --version"],
+      "installMethod": "builtin",
+      "updateCommands": ["winget upgrade Microsoft.PowerShell"]
+    }
+  },
+  "wsl-development": {
+    "wsl": {
+      "name": "WSL",
+      "executableNames": ["wsl.exe", "wsl"],
+      "versionCommands": ["wsl --version"],
+      "testCommands": ["wsl --version", "wsl --list"],
+      "installMethod": "builtin",
+      "updateCommands": ["wsl --update"]
+    },
+    "ubuntu": {
+      "name": "Ubuntu",
+      "executableNames": ["ubuntu.exe", "ubuntu"],
+      "versionCommands": ["ubuntu --version"],
+      "testCommands": ["ubuntu --version", "wsl -d Ubuntu --version"],
+      "installMethod": "wsl",
+      "installCommands": ["wsl --install -d Ubuntu"],
+      "updateCommands": ["wsl -d Ubuntu --update"]
+    },
+    "kali": {
+      "name": "Kali Linux",
+      "executableNames": ["kali.exe", "kali"],
+      "versionCommands": ["kali --version"],
+      "testCommands": ["kali --version", "wsl -d kali-linux --version"],
+      "installMethod": "wsl",
+      "installCommands": ["wsl --install -d kali-linux"],
+      "updateCommands": ["wsl -d kali-linux --update"]
+    }
+  },
+  "ai-development": {
+    "tensorflow": {
+      "name": "TensorFlow",
+      "executableNames": ["python.exe"],
+      "versionCommands": ["python -c \"import tensorflow as tf; print(tf.__version__)\""],
+      "testCommands": ["python -c \"import tensorflow as tf; print(tf.__version__)\""],
+      "installMethod": "pip",
+      "installCommands": ["pip install tensorflow"],
+      "updateCommands": ["pip install --upgrade tensorflow"]
+    },
+    "pytorch": {
+      "name": "PyTorch",
+      "executableNames": ["python.exe"],
+      "versionCommands": ["python -c \"import torch; print(torch.__version__)\""],
+      "testCommands": ["python -c \"import torch; print(torch.__version__)\""],
+      "installMethod": "pip",
+      "installCommands": ["pip install torch torchvision torchaudio"],
+      "updateCommands": ["pip install --upgrade torch torchvision torchaudio"]
+    },
+    "jupyter": {
+      "name": "Jupyter Notebook",
+      "executableNames": ["jupyter.exe", "jupyter"],
+      "versionCommands": ["jupyter --version"],
+      "testCommands": ["jupyter --version", "jupyter --help"],
+      "installMethod": "pip",
+      "installCommands": ["pip install jupyter"],
+      "updateCommands": ["pip install --upgrade jupyter"]
+    },
+    "anaconda": {
+      "name": "Anaconda",
+      "executableNames": ["conda.exe", "conda"],
+      "versionCommands": ["conda --version"],
+      "testCommands": ["conda --version", "conda info"],
+      "wingetId": "Anaconda.Miniconda3",
+      "chocoId": "anaconda3",
+      "updateCommands": ["conda update conda"]
+    }
+  },
+  "server-development": {
+    "apache": {
+      "name": "Apache",
+      "executableNames": ["httpd.exe"],
+      "versionCommands": ["httpd -v"],
+      "testCommands": ["httpd -v", "httpd -t"],
+      "wingetId": "Apache.Apache",
+      "chocoId": "apache-httpd",
+      "updateCommands": ["winget upgrade Apache.Apache"]
+    },
+    "nginx": {
+      "name": "Nginx",
+      "executableNames": ["nginx.exe"],
+      "versionCommands": ["nginx -v"],
+      "testCommands": ["nginx -v", "nginx -t"],
+      "wingetId": "Nginx.Nginx",
+      "chocoId": "nginx",
+      "updateCommands": ["winget upgrade Nginx.Nginx"]
+    },
+    "xampp": {
+      "name": "XAMPP",
+      "executableNames": ["xampp-control.exe"],
+      "versionCommands": [],
+      "testCommands": ["Test-Path \"${env:ProgramFiles}\\XAMPP\\xampp-control.exe\""],
+      "wingetId": "ApacheFriends.XAMPP",
+      "chocoId": "xampp",
+      "updateCommands": ["winget upgrade ApacheFriends.XAMPP"]
+    }
+  },
+  "basic-development": {
+    "git": {
+      "name": "Git",
+      "executableNames": ["git.exe", "git"],
+      "versionCommands": ["git --version"],
+      "testCommands": ["git --version", "git config --global user.name"],
+      "wingetId": "Git.Git",
+      "chocoId": "git",
+      "updateCommands": ["winget upgrade Git.Git"]
+    },
+    "github-cli": {
+      "name": "GitHub CLI",
+      "executableNames": ["gh.exe", "gh"],
+      "versionCommands": ["gh --version"],
+      "testCommands": ["gh --version", "gh auth status"],
+      "wingetId": "GitHub.cli",
+      "chocoId": "gh",
+      "updateCommands": ["winget upgrade GitHub.cli"]
+    },
+    "vscode": {
+      "name": "Visual Studio Code",
+      "executableNames": ["code.exe", "code"],
+      "versionCommands": ["code --version"],
+      "testCommands": ["code --version", "code --help"],
+      "wingetId": "Microsoft.VisualStudioCode",
+      "chocoId": "vscode",
+      "updateCommands": ["winget upgrade Microsoft.VisualStudioCode"]
+    }
+  },
+  "browsers": {
+    "chrome": {
+      "name": "Google Chrome",
+      "executableNames": ["chrome.exe"],
+      "versionCommands": [],
+      "testCommands": ["Test-Path \"${env:ProgramFiles}\\Google\\Chrome\\Application\\chrome.exe\""],
+      "wingetId": "Google.Chrome",
+      "chocoId": "googlechrome",
+      "updateCommands": ["winget upgrade Google.Chrome"]
+    },
+    "firefox": {
+      "name": "Mozilla Firefox",
+      "executableNames": ["firefox.exe"],
+      "versionCommands": [],
+      "testCommands": ["Test-Path \"${env:ProgramFiles}\\Mozilla Firefox\\firefox.exe\""],
+      "wingetId": "Mozilla.Firefox",
+      "chocoId": "firefox",
+      "updateCommands": ["winget upgrade Mozilla.Firefox"]
+    },
+    "edge": {
+      "name": "Microsoft Edge",
+      "executableNames": ["msedge.exe"],
+      "versionCommands": [],
+      "testCommands": ["Test-Path \"${env:ProgramFiles(x86)}\\Microsoft\\Edge\\Application\\msedge.exe\""],
+      "wingetId": "Microsoft.Edge",
+      "chocoId": "microsoft-edge",
+      "updateCommands": ["winget upgrade Microsoft.Edge"]
+    }
+  },
+  "containers": {
+    "docker": {
+      "name": "Docker Desktop",
+      "executableNames": ["docker.exe", "docker"],
+      "versionCommands": ["docker --version"],
+      "testCommands": ["docker --version", "docker version"],
+      "wingetId": "Docker.DockerDesktop",
+      "chocoId": "docker-desktop",
+      "updateCommands": ["winget upgrade Docker.DockerDesktop"]
+    },
+    "docker-compose": {
+      "name": "Docker Compose",
+      "executableNames": ["docker-compose.exe", "docker-compose"],
+      "versionCommands": ["docker-compose --version"],
+      "testCommands": ["docker-compose --version", "docker-compose --help"],
+      "installMethod": "docker",
+      "updateCommands": ["winget upgrade Docker.DockerDesktop"]
+    },
+    "kubernetes": {
+      "name": "Kubernetes",
+      "executableNames": ["kubectl.exe", "kubectl"],
+      "versionCommands": ["kubectl version --client"],
+      "testCommands": ["kubectl version --client", "kubectl cluster-info"],
+      "wingetId": "Kubernetes.kubectl",
+      "chocoId": "kubernetes-cli",
+      "updateCommands": ["winget upgrade Kubernetes.kubectl"]
+    }
+  },
+  "databases": {
+    "postgresql": {
+      "name": "PostgreSQL",
+      "executableNames": ["psql.exe", "psql"],
+      "versionCommands": ["psql --version"],
+      "testCommands": ["psql --version", "psql --help"],
+      "wingetId": "PostgreSQL.PostgreSQL",
+      "chocoId": "postgresql",
+      "updateCommands": ["winget upgrade PostgreSQL.PostgreSQL"]
+    },
+    "mysql": {
+      "name": "MySQL",
+      "executableNames": ["mysql.exe", "mysql"],
+      "versionCommands": ["mysql --version"],
+      "testCommands": ["mysql --version", "mysql --help"],
+      "wingetId": "Oracle.MySQL",
+      "chocoId": "mysql",
+      "updateCommands": ["winget upgrade Oracle.MySQL"]
+    },
+    "mongodb": {
+      "name": "MongoDB",
+      "executableNames": ["mongod.exe", "mongo.exe"],
+      "versionCommands": ["mongod --version", "mongo --version"],
+      "testCommands": ["mongod --version", "mongo --version"],
+      "wingetId": "MongoDB.Server",
+      "chocoId": "mongodb",
+      "updateCommands": ["winget upgrade MongoDB.Server"]
+    }
+  }
+}
